@@ -1,6 +1,7 @@
 import twitter
 import json
 import random
+import re
 from keys import *
 
 # Authenticate via OAuth
@@ -77,6 +78,28 @@ def constructSentence(previousState, graph):
             hasNextState = False
     return sentence
 
+def removeLinks(sentence):
+    #since I was too lazy to remove the links when constructing the graph *shrug*
+    sentence = re.sub(r"http\S+", "", sentence)
+    return sentence
+
+def thousandRandomTweets():
+    random_tweets = []
+    for i in range(1001):
+        try:
+            graph = getGraph('tweet_graph.json')
+            beginning = pickBeginning(graph)
+            sentence = removeLinks(constructSentence(beginning, graph))
+            if(sentence):
+                random_tweets.append(sentence.encode('utf-8'))
+        except Exception:
+            pass
+    f = open('random_tweets.txt', 'w')
+    for i in random_tweets:
+        f.write("%s\n" % i)
+
+
+
 if __name__ == '__main__':
     #getAllTweets("nucle0tides")
     # graph = makeNodes()
@@ -86,7 +109,8 @@ if __name__ == '__main__':
     # json = json.dumps(graph)
     # graph_json = open('tweet_graph.json', 'w')
     # graph_json.write(json)
-    graph = getGraph('tweet_graph.json')
-    beginning = pickBeginning(graph)
-    sentence = constructSentence(beginning, graph)
-    print(sentence.encode('utf-8'))
+    # graph = getGraph('tweet_graph.json')
+    # beginning = pickBeginning(graph)
+    # sentence = removeLinks(constructSentence(beginning, graph))
+    # print(sentence.encode('utf-8'))
+    thousandRandomTweets()
