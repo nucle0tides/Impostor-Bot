@@ -25,21 +25,22 @@ def getAllTweets(screen_name):
         oldest = all_tweets[-1].id - 1
 
     out = [tweet.text.encode('utf-8') for tweet in all_tweets]
-    f = open('my_tweets.txt', 'w')
+    f = open(screen_name + '_tweets.txt', 'w')
     for i in out:
         f.write("%s\n" % i)
 
 #who knows if this is a good way to do this. I sure don't know.
-def makeNodes():
+def makeNodes(person):
     node_dict = {}
-    f = open('my_tweets.txt', 'r')
+    f = open(person + '_tweets.txt', 'r')
     for lines in f:
         for word in lines.split(' '):
             node_dict[word.lower()] = []
+    f.close()
     return node_dict
 
-def createEdges(graph):
-    f = open('my_tweets.txt', 'r')
+def createEdges(graph, person):
+    f = open(person + '_tweets.txt', 'r')
     current_word = ''
     next_word = ''
     for lines in f:
@@ -50,12 +51,13 @@ def createEdges(graph):
             if(i < len(line) - 1):
                 next_word = line[i + 1]
                 graph[current_word.lower()].append(next_word.lower())
-
+    f.close()
     return graph
 
-def getGraph(filename):
-    f = open(filename, 'r')
+def getGraph(person):
+    f = open(person + "_tweet_graph.json", 'r')
     graph = json.loads(f.read())
+    f.close()
     return graph
 
 def pickBeginning(graph):
@@ -83,34 +85,31 @@ def removeLinks(sentence):
     sentence = re.sub(r"http\S+", "", sentence)
     return sentence
 
-def thousandRandomTweets():
+def batchGenerateTweets(numTweets, person):
     random_tweets = []
-    for i in range(1001):
+    graph = getGraph(person)
+    for i in range(numTweets):
         try:
-            graph = getGraph('tweet_graph.json')
             beginning = pickBeginning(graph)
             sentence = removeLinks(constructSentence(beginning, graph))
             if(sentence):
                 random_tweets.append(sentence.encode('utf-8'))
         except Exception:
             pass
-    f = open('random_tweets.txt', 'w')
+    f = open(person + '_random_tweets.txt', 'w')
     for i in random_tweets:
         f.write("%s\n" % i)
+    f.close()
 
-
+def makeJson(graph, person):
+    graph = json.dumps(graph)
+    graph_json = open(person + '_tweet_graph.json', 'w')
+    graph_json.write(graph)
 
 if __name__ == '__main__':
-    #getAllTweets("nucle0tides")
-    # graph = makeNodes()
-    # print(graph)
-    # graph = createEdges(graph)
-    # print(graph)
-    # json = json.dumps(graph)
-    # graph_json = open('tweet_graph.json', 'w')
-    # graph_json.write(json)
-    # graph = getGraph('tweet_graph.json')
-    # beginning = pickBeginning(graph)
-    # sentence = removeLinks(constructSentence(beginning, graph))
-    # print(sentence.encode('utf-8'))
-    thousandRandomTweets()
+    person = 'nucle0tides'
+    # getAllTweets(person)
+    # graph = makeNodes(person)
+    # graph = createEdges(graph, person)
+    # makeJson(graph, person)
+    batchGenerateTweets(1000, person)
