@@ -77,11 +77,4 @@ def createOneTweet(person):
     except Exception as excep:
         print type(excep)#good one
         print excep
-    return sentence.encode('utf-8')
-
-def test(person) :
-    graph = makeNodes(person)
-    graph = createEdges(graph, person)
-    makeJson(graph, person)
-    sentence = createOneTweet(person)
-    print(sentence.encode('utf-8'))
+    return sentence.encode('utf-8')[:140]

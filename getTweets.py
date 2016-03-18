@@ -15,7 +15,7 @@ def getAllTweets(screen_name):
     new = api.GetUserTimeline(screen_name = screen_name, count = 200)
     all_tweets.extend(new)
     oldest = all_tweets[-1].id - 1
-    
+
     while(len(new) > 0):
         new = api.GetUserTimeline(screen_name = screen_name, count = 200, max_id = oldest)
         all_tweets.extend(new)

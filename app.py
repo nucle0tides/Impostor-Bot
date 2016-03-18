@@ -9,16 +9,12 @@ def index():
 
 @app.route('/getTweet/<name>', methods=['GET'])
 def getTweets(name):
-    #person = request.form['twitter_name']
-    #run script from here
     tweet = main.do(name)
-    #return redirect(url_for('returnTweet', tweet = tweet))
     return tweet
 
-@app.route('/tweet/<tweet>')
-def returnTweet(tweet):
-    return tweet
-
+@app.route('/more/')
+def more():
+    return render_template('more.html')
 
 if __name__ == '__main__':
     app.debug = True

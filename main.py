@@ -5,6 +5,8 @@ import os.path
 def do(person):
     if os.path.isfile('static/tweets/' + person + '_tweet_graph.json'):
         sentence = createOneTweet(person)
+        while len(sentence) < 1:
+            sentence = createOneTweet(person)
         return sentence
     else:
         try:
@@ -15,4 +17,6 @@ def do(person):
         graph = createEdges(graph, person)
         makeJson(graph, person)
         sentence = createOneTweet(person)
+        while len(sentence) < 1:
+            sentence = createOneTweet(person)
         return sentence
