@@ -3,15 +3,15 @@
 {% block content %}
 <div class="section">
   <div class="row">
-    <div class="col s12 content">
+
       <h5 class="left">Enter Your Twitter Handle</h5>
       <div class="input-field col s12 center">
         <input placeholder="e.g.: kanyewest" id="twitter_input" name="twitter_user" type="text" class="validate">
-        <button class="btn waves-effect waves-light" onClick="do_that_thing()">Submit
+        <button class="btn waves-effect waves-light" id='Submitbutton' onClick="do_that_thing()">Submit
           <i class="material-icons right">send</i>
         </button>
       </div>
-    </div>
+
   </div>
 </div>
 <div class="section">
@@ -32,6 +32,7 @@ function do_that_thing()
   xhttp.onreadystatechange = function() {
     if (xhttp.readyState == 4 && xhttp.status == 200) {
       document.getElementById("response").innerHTML = xhttp.responseText
+
     }
   };
   var user = document.getElementById('twitter_input').value

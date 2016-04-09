@@ -1,1 +1,1 @@
-#Generating new Gabby-approved tweets based on prior tweets
+#Imposter Bot
