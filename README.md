@@ -1,1 +1,1 @@
-#Imposter Bot
+#Impostor Bot
