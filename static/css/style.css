@@ -29,4 +29,7 @@ footer a .fa {
 .bot-response-wrapper {
   display: table-row; }
 
+textarea.materialize-textarea {
+  border-bottom: #2196f3; }
+
 /*# sourceMappingURL=style.css.map */
