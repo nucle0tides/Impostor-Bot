@@ -39,4 +39,5 @@ function thinking(user)
     thinking += "</div>"
     
     $('.bot-chats').append($(thinking).hide().fadeIn(500));
+    $('.bot-section').animate({scrollTop: $('.bot-section')[0].scrollHeight - $('.bot-section').height()}, 300); 
 }

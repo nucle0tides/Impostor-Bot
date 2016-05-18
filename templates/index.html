@@ -36,14 +36,13 @@ function do_that_thing()
   xhttp.onreadystatechange = function() {
     if (xhttp.readyState == 4 && xhttp.status == 200) {
       add_tweet(xhttp.responseText, twitter_pic); 
-      console.log(xhttp.responseText)
+      $('.bot-section').animate({scrollTop: $('.bot-section')[0].scrollHeight - $('.bot-section').height()}, 300); 
     }
   };
   
   var xhttp_pic = new XMLHttpRequest();
   xhttp_pic.onreadystatechange = function() {
-    if (xhttp_pic.readyState == 4 && xhttp_pic.status == 200) {
-      console.log(xhttp_pic.responseText); 
+    if (xhttp_pic.readyState == 4 && xhttp_pic.status == 200) { 
       twitter_pic = xhttp_pic.responseText; 
     }
   };
