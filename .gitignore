@@ -71,3 +71,7 @@ keys.py
 *.h
 imposterenv/Scripts/wheel.exe
 imposterenv/pip-selfcheck.json
+*.exe
+imposterenv/Scripts/deactivate.bat
+imposterenv/Scripts/activate.bat
+imposterenv/Scripts/activate.ps1
