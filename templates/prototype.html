@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="section">
+  <div class="row">
+
+      <h5 class="left">Enter Your Twitter Handle</h5>
+      <div class="input-field col s12 center">
+        <input placeholder="e.g.: kanyewest" id="twitter_input" name="twitter_user" type="text" class="validate">
+        <button class="btn waves-effect waves-light" id='Submitbutton' onClick="do_that_thing()">Submit
+          <i class="material-icons right">send</i>
+        </button>
+      </div>
+
+  </div>
+</div>
+<div class="section">
+  <div class="row">
+    <div class="col s12">
+      <div id="response">
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+function do_that_thing()
+{
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+      document.getElementById("response").innerHTML = xhttp.responseText
+
+    }
+  };
+  var user = document.getElementById('twitter_input').value
+  xhttp.open("GET", "/getTweet/" + user, true);
+  xhttp.send();
+}
+</script>
+{% endblock %}

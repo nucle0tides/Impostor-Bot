@@ -21,7 +21,10 @@ def createEdges(graph, person):
             current_word = line[i]
             if(i < len(line) - 1):
                 next_word = line[i + 1]
-                graph[current_word.lower()].append(next_word.lower())
+                try: 
+                    graph[current_word.lower()].append(next_word.lower())
+                except: 
+                    pass
     f.close()
     return graph
 

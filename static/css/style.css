@@ -1,13 +1,32 @@
 body {
   display: flex;
   min-height: 100vh;
-  flex-direction: column;
-}
+  flex-direction: column; }
 
 main {
-  flex: 1 0 auto;
-}
+  flex: 1 0 auto; }
 
-a .fa {
-  color: #e1f5fe; 
-}
+footer a .fa {
+  color: #e1f5fe; }
+
+.bot-section {
+  border-radius: 10px;
+  height: 60vh;
+  overflow: scroll; }
+
+.submit-button {
+  width: 100%; }
+
+.bot-chats {
+  width: 90%;
+  padding: 5px 5px 5px 5px;
+  display: table; }
+
+.chip {
+  min-height: 32px;
+  height: auto; }
+
+.bot-response-wrapper {
+  display: table-row; }
+
+/*# sourceMappingURL=style.css.map */

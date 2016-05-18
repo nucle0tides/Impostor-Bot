@@ -1,42 +1,45 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="section">
-  <div class="row">
-
-      <h5 class="left">Enter Your Twitter Handle</h5>
-      <div class="input-field col s12 center">
-        <input placeholder="e.g.: kanyewest" id="twitter_input" name="twitter_user" type="text" class="validate">
-        <button class="btn waves-effect waves-light" id='Submitbutton' onClick="do_that_thing()">Submit
-          <i class="material-icons right">send</i>
-        </button>
-      </div>
-
-  </div>
-</div>
-<div class="section">
-  <div class="row">
-    <div class="col s12">
-      <div id="response">
-      </div>
+<div class="section no-pad-bot">
+    <div class="container">
+        <div class="row center"><h3>IMPOSTOR BOT</h3></div>
     </div>
-  </div>
+</div>
+
+<div class="section no-pad-top">
+    <div class="container">
+        <div class="section bot-section no-pad-bot z-depth-2">
+            <div class="container bot-chats">
+            </div>
+        </div>
+        
+        <div class="section no-pad-top input-field">
+            <input placeholder="e.g.: kanyewest" id="twitter_input" name="twitter_user" type="text" class="validate">
+        </div>
+        
+        <div class="section no-pad-top">
+            <button class="btn waves-effect waves-light submit-button" id='Submitbutton' onClick="do_that_thing()">Submit
+            </button>
+        </div>
+    </div>
 </div>
 {% endblock %}
 
 {% block script %}
+<script src="{{ url_for('static', filename='js/init.js') }}"></script>
 <script>
 function do_that_thing()
 {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (xhttp.readyState == 4 && xhttp.status == 200) {
-      document.getElementById("response").innerHTML = xhttp.responseText
-
+      add_tweet(xhttp.responseText); 
     }
   };
   var user = document.getElementById('twitter_input').value
   xhttp.open("GET", "/getTweet/" + user, true);
+  thinking(user); 
   xhttp.send();
 }
 </script>

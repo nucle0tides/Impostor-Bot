@@ -68,3 +68,6 @@ target/
 # pyenv
 .python-version
 keys.py
+*.h
+imposterenv/Scripts/wheel.exe
+imposterenv/pip-selfcheck.json
