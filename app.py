@@ -11,6 +11,11 @@ def index():
 def getTweets(name):
     tweet = main.do(name)
     return tweet
+    
+@app.route('/getPic/<name>', methods=['GET'])
+def getPics(name):
+    pic = main.doPic(name)
+    return pic
 
 @app.route('/more/')
 def more():

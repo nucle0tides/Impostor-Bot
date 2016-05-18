@@ -31,13 +31,25 @@
 <script>
 function do_that_thing()
 {
+  var twitter_pic = null; 
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (xhttp.readyState == 4 && xhttp.status == 200) {
-      add_tweet(xhttp.responseText); 
+      add_tweet(xhttp.responseText, twitter_pic); 
+      console.log(xhttp.responseText)
+    }
+  };
+  
+  var xhttp_pic = new XMLHttpRequest();
+  xhttp_pic.onreadystatechange = function() {
+    if (xhttp_pic.readyState == 4 && xhttp_pic.status == 200) {
+      console.log(xhttp_pic.responseText); 
+      twitter_pic = xhttp_pic.responseText; 
     }
   };
   var user = document.getElementById('twitter_input').value
+  xhttp_pic.open("GET", "/getPic/" + user, true);
+  xhttp_pic.send();
   xhttp.open("GET", "/getTweet/" + user, true);
   thinking(user); 
   xhttp.send();

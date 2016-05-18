@@ -20,3 +20,6 @@ def do(person):
         while len(sentence) < 1:
             sentence = createOneTweet(person)
         return sentence
+
+def doPic(person): 
+    return getTwitterPicture(person)

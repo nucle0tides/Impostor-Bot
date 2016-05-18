@@ -21,6 +21,9 @@ def createEdges(graph, person):
             current_word = line[i]
             if(i < len(line) - 1):
                 next_word = line[i + 1]
+                #Why are you doing this Gabby? 
+                #Well, for some reason this likes to break on the key 'sandwich.'
+                #Sorry mom, sorry future employers
                 try: 
                     graph[current_word.lower()].append(next_word.lower())
                 except: 

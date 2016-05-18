@@ -25,3 +25,7 @@ def getAllTweets(screen_name):
     f = open('static/tweets/' + screen_name + '_tweets.txt', 'w')
     for i in out:
         f.write("%s\n" % i)
+
+def getTwitterPicture(screen_name): 
+    return api.GetUser(screen_name = screen_name).profile_image_url
+    

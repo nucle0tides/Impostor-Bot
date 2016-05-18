@@ -7,7 +7,7 @@ function start(){
     var startBubble = "<div class='row bot-response-wrapper'>"
     startBubble +="<div class='row left'>"; 
     startBubble += "<div class='chip'>"; 
-    startBubble += "<img src='http://imagecdn.godvine.com/pics/GV-Article/dogsmiles-2.jpg' alt='Contact Person'>"; 
+    startBubble += "<img src='http://imagecdn.godvine.com/pics/GV-Article/dogsmiles-2.jpg'>"; 
     startBubble += "Hey there! I'm Impostor Bot! I do things, I guess"; 
     startBubble += "</div>"
     startBubble += "</div>"
@@ -15,13 +15,13 @@ function start(){
     $('.bot-chats').append($(startBubble).hide().fadeIn(500)); 
 }
 
-function add_tweet(response)
+function add_tweet(response, picture)
 { 
     var tweet = "<div class='row bot-response-wrapper'>"
     tweet +="<div class='row right'>"; 
-    tweet += "<div class='chip'>"; 
+    tweet += "<div class='chip blue white-text'>"; 
+    tweet += "<img src='"+picture+"' class='left'>"; 
     tweet += response; 
-    // tweet += "<img src='http://imagecdn.godvine.com/pics/GV-Article/dogsmiles-2.jpg' alt='Contact Person'>"; 
     tweet += "</div>"
     tweet += "</div>"
     
@@ -34,7 +34,7 @@ function thinking(user)
     thinking +="<div class='row left'>"; 
     thinking += "<div class='chip'>"; 
     thinking += "Generating a tweet from user @" + user +"..."; 
-    thinking += "<img src='http://imagecdn.godvine.com/pics/GV-Article/dogsmiles-2.jpg' alt='Contact Person'>"; 
+    thinking += "<img src='http://imagecdn.godvine.com/pics/GV-Article/dogsmiles-2.jpg'>"; 
     thinking += "</div>"
     thinking += "</div>"
     
